@@ -1,0 +1,22 @@
+{
+  "name": "@starter/e2e",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:web": "playwright test --project=web-authenticated --project=web-signed-out",
+    "test:api": "playwright test --project=api",
+    "install:browsers": "playwright install chromium",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@clerk/testing": "latest",
+    "@playwright/test": "latest",
+    "@types/node": "latest",
+    "dotenv": "latest",
+    "typescript": "latest"
+  }
+}

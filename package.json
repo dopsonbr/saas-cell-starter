@@ -1,0 +1,20 @@
+{
+  "name": "saas-cell-starter",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter './apps/**' dev",
+    "build": "pnpm -r --filter './packages/**' build && pnpm -r --filter './apps/**' build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "check": "pnpm typecheck && pnpm lint && pnpm build",
+    "e2e": "pnpm --filter @starter/e2e test",
+    "e2e:web": "pnpm --filter @starter/e2e test:web",
+    "e2e:api": "pnpm --filter @starter/e2e test:api",
+    "e2e:install": "pnpm --filter @starter/e2e install:browsers",
+    "init:project": "node scripts/init-template.mjs"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "@biomejs/biome": "latest"
+  }
+}

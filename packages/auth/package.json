@@ -1,0 +1,30 @@
+{
+  "name": "@starter/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./react": "./src/react.tsx",
+    "./server": "./src/server.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@clerk/backend": "latest",
+    "@clerk/react": "latest",
+    "@clerk/ui": "latest",
+    "hono": "latest"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "react": "latest",
+    "typescript": "latest"
+  }
+}
