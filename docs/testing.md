@@ -10,9 +10,10 @@ The `api` Playwright project starts the real local Hono server and verifies over
 
 - `/health` is public
 - protected endpoints reject unauthenticated requests
-- an authenticated Clerk session can load `/v1/dashboard`
-- the dashboard request reaches the configured Neon database
-- invalid authenticated writes are rejected by contract validation
+- an authenticated expected-organization session can use the complete content lifecycle
+- an independent wrong-organization session receives `403`
+- unauthenticated checks use an empty request context
+- invalid input, public revocation, CORS with `X-Run-Id`, and deterministic mock streaming
 
 API tests use Playwright's request client; they do not import API handlers directly.
 
@@ -24,7 +25,9 @@ The browser projects start the real Vite SPA and paired API and verify:
 - a Clerk test user can establish an authenticated session
 - the expected Clerk organization is made active
 - the dashboard renders data from the API
-- a user can create a record through UI -> HTTP API -> Neon and see the refreshed result
+- a user can create/edit/hard-refresh, apply an AI suggestion, explicitly save, publish, view publicly, and revoke
+- loading, empty, error, success, revoked, archived, desktop, and mobile states
+- structured suggestions are rendered as UI rather than raw JSON
 
 ## Test environment
 
@@ -34,13 +37,9 @@ Copy:
 cp tests/e2e/.env.e2e.example tests/e2e/.env.e2e.local
 ```
 
-Populate it with a **Clerk development instance** and **dedicated Neon test database**. Create a synthetic user (a `+clerk_test` address is recommended by Clerk for tests) and make that user a member of `EXPECTED_CLERK_ORG_ID`.
+Populate it with a **Clerk development instance** and **dedicated Neon test database**. Create two independent synthetic users: one only in `EXPECTED_CLERK_ORG_ID`, and one only in `E2E_WRONG_CLERK_ORG_ID`.
 
-Apply migrations before running E2E:
-
-```bash
-DATABASE_URL='<e2e database url>' pnpm --filter @starter/db db:migrate
-```
+Set `E2E_DATABASE_URL` and explicitly opt in with `E2E_ALLOW_RESET=1`. Each suite migrates and resets only `content_items` before its serial run.
 
 Install the browser once:
 
@@ -56,10 +55,6 @@ pnpm e2e:api      # HTTP API only
 pnpm e2e:web      # SPA flows only
 ```
 
-Playwright starts the local API and web servers automatically. Existing servers on ports 3001/5173 are reused.
+Playwright uses strict local ports API `3101` and web `5177`, one worker, and does not reuse processes unless `E2E_REUSE_SERVERS=1`. If both `E2E_WEB_URL` and `E2E_API_URL` are supplied, local server processes are omitted entirely.
 
-## Deliberate omissions
-
-The default suite has one Clerk organization. Wrong-organization `403` verification remains a security acceptance check when changing auth middleware. If cross-org behavior becomes an area of active development, add a second synthetic organization/user fixture rather than weakening the middleware for tests.
-
-The E2E suite does not use production customer data, production Clerk credentials, or a production Neon project.
+Optional live-provider completion is enabled only when live provider variables are intentionally supplied. Missing live credentials or deployed preview URLs do not weaken or skip deterministic mock/local coverage.

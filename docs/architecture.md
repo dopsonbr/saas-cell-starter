@@ -85,6 +85,14 @@ This means a valid user from another customer organization still cannot use the 
 
 The starter dashboard intentionally loads all business data from `/v1/*` endpoints through TanStack Query. UI components never synthesize authoritative business state locally.
 
+## Collaborative-content sample
+
+`content_items` demonstrates a production-shaped lifecycle without pretending to be a product domain. Every authenticated member of the deployment-pinned Clerk organization has equal permissions. `createdByUserId` is audit metadata, not an ownership boundary. Draft and published items remain editable; publishing is idempotent; revocation returns an item to draft; archiving is terminal.
+
+Public access is the exceptional unauthenticated route `GET /public/v1/items/:shareToken`. Malformed, unknown, revoked, draft, and archived tokens all return the same `404` boundary.
+
+AI follows the same runtime separation: schemas live in `packages/contracts`, provider code and credentials remain in `apps/api`, and the browser renders only validated structured suggestions. Suggestions change unsaved local form state only.
+
 
 ## Component library
 

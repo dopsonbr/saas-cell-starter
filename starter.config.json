@@ -1,4 +1,9 @@
 {
+  "initialized": false,
+  "productName": "SaaS Cell Starter",
+  "slug": "saas-cell-starter",
+  "packageScope": "@starter",
+  "aiProvider": "mock",
   "architecture": "single-tenant-cell",
   "frontend": "react-vite",
   "api": "hono-vercel",
@@ -8,15 +13,6 @@
   "testing": "playwright-e2e",
   "secrets": "vercel-injected-environment",
   "ciRequired": false,
-  "customerDeployment": [
-    "web",
-    "api",
-    "database"
-  ],
-  "shared": [
-    "marketing",
-    "clerk",
-    "observability",
-    "analytics"
-  ]
+  "customerDeployment": ["web", "api", "database"],
+  "shared": ["marketing", "clerk", "observability", "analytics"]
 }

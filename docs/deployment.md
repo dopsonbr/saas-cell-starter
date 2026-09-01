@@ -22,6 +22,7 @@ From one repository, create:
 `<customer>-api`
 
 - Root Directory: `apps/api`
+- Framework Preset: Hono (automatic detection); the workspace `postinstall` emits server package JavaScript before Vercel packages `src/index.ts` as a function
 - `FRONTEND_URL=https://<customer-web-domain>`
 - `DATABASE_URL=<customer Neon project connection string>` **Sensitive**
 - `CLERK_SECRET_KEY=...` **Sensitive**
@@ -29,6 +30,31 @@ From one repository, create:
 - `CLERK_JWT_KEY=...` (recommended; public verification key, server-only config)
 - `EXPECTED_CLERK_ORG_ID=org_...`
 - `CUSTOMER_SLUG=<opaque/non-sensitive slug>`
+- `AI_PROVIDER=mock|openai|vercel-gateway`
+- `AI_MODEL=...` (required for live providers; Gateway uses `provider/model`)
+- `OPENAI_API_KEY=...` **Sensitive**, direct OpenAI only
+- `AI_GATEWAY_API_KEY=...` **Sensitive**, optional Gateway credential
+- `VERCEL_OIDC_TOKEN=...` **Sensitive**, optional Gateway credential
+
+## Complete environment matrix
+
+| Variable | Marketing | Web | API | Confidential |
+|---|---:|---:|---:|---:|
+| `VITE_APP_URL` | required | — | — | no |
+| `VITE_API_URL` | — | required | — | no |
+| `VITE_CLERK_PUBLISHABLE_KEY` | — | required | — | no |
+| `DATABASE_URL` | — | — | required | yes |
+| `CLERK_SECRET_KEY` | — | — | required | yes |
+| `CLERK_PUBLISHABLE_KEY` | — | — | required | no |
+| `CLERK_JWT_KEY` | — | — | recommended | no, server-only |
+| `EXPECTED_CLERK_ORG_ID` | — | — | required | no, server-only |
+| `FRONTEND_URL` | — | — | required | no |
+| `CUSTOMER_SLUG` | — | — | required | no |
+| `AI_PROVIDER` | — | — | required, defaults mock | no |
+| `AI_MODEL` | — | — | live providers | no |
+| AI/provider and telemetry credentials | — | — | provider-dependent | yes |
+
+Each Vercel project uses its app directory as Root Directory. `apps/web/vercel.json` and `apps/marketing/vercel.json` preserve SPA refreshes. Vercel recognizes the API's default Hono export at `apps/api/src/index.ts` without a rewrite.
 
 ## Customer onboarding
 
@@ -45,6 +71,9 @@ For each customer:
 9. Set API `FRONTEND_URL` to the final web origin and redeploy if necessary.
 10. Verify health, auth, wrong-org rejection, and a DB-backed dashboard request.
 11. Confirm confidential Preview/Production env vars are marked Sensitive.
+12. Run `pnpm verify:deployment -- --marketing-url ... --web-url ... --api-url ... --expected-revision ...` against preview URLs before promotion.
+
+`verify:deployment` checks marketing root, API health, protected `401`, unknown public token `404`, nested SPA refresh, exact-origin CORS, and optional source revision. It does not deploy or promote anything.
 
 ## Releases
 

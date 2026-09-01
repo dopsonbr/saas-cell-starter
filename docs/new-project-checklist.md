@@ -3,8 +3,9 @@
 ## Initialize
 
 - [ ] Create a repo from the GitHub template
-- [ ] Run `pnpm init:project -- --name "Product Name" --slug product-slug`
-- [ ] Replace starter sample domain (`records`) with the first real product concept when known
+- [ ] Run `pnpm init:project -- --name "Product Name" --slug product-slug --ai-provider mock`
+- [ ] Replace starter sample domain (`content_items`) with the first real product concept when known
+- [ ] Run `pnpm run doctor` and `pnpm verify:template`
 - [ ] Update marketing headline/value proposition
 - [ ] Create `docs/product.md` from your product brief
 
@@ -40,7 +41,7 @@
 
 ## E2E test cell
 
-- [ ] Create a synthetic Clerk test user and add it to the synthetic organization
+- [ ] Create independent expected-org and wrong-org Clerk test users
 - [ ] Create a dedicated Neon E2E database and run migrations
 - [ ] Populate `tests/e2e/.env.e2e.local`
 - [ ] `pnpm e2e:install`
@@ -51,6 +52,7 @@
 - [ ] `pnpm typecheck`
 - [ ] `pnpm lint`
 - [ ] `pnpm build`
+- [ ] `pnpm test`
 - [ ] sign-in works
 - [ ] wrong Clerk org receives `403`
 - [ ] SPA hard-refresh works on nested route

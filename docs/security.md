@@ -31,6 +31,7 @@ Server-only confidential values:
 - `CLERK_SECRET_KEY`
 - `DATABASE_URL`
 - telemetry/exporter credentials
+- `OPENAI_API_KEY`, `AI_GATEWAY_API_KEY`, and `VERCEL_OIDC_TOKEN`
 
 Server-only configuration that is not confidential:
 
@@ -64,6 +65,10 @@ Disallowed without an explicit privacy review:
 - database values
 - SQL bind parameters
 - full URLs containing customer data
+
+AI telemetry is restricted further to provider, credential mode, intent, timing, opaque request/run IDs, and stable safe error categories. Conversation text, forwarded drafts, suggestions, request bodies, keys, and tokens must never be logged.
+
+Public share lookup intentionally returns `404` for every invalid or inaccessible token state, preventing callers from distinguishing malformed, unknown, revoked, draft, or archived records.
 
 ## CORS
 

@@ -39,6 +39,8 @@ There is **no control plane** and **no required CI pipeline** in this starter. P
 - Drizzle ORM + Neon Postgres
 - Vercel for `marketing`, customer `web`, and customer `api` projects
 - Provider-neutral structured telemetry with customer/cell metadata
+- Generic content lifecycle with unlisted, revocable public shares
+- Mock-first TanStack AI collaborator with optional OpenAI or Vercel AI Gateway providers
 
 ## Repository
 
@@ -84,7 +86,7 @@ See [`AGENTS.md`](./AGENTS.md) and [`docs/architecture.md`](./docs/architecture.
 ```bash
 corepack enable
 pnpm install
-pnpm init:project -- --name "My Product" --slug my-product
+pnpm init:project -- --name "My Product" --slug my-product --ai-provider mock
 ```
 
 Then configure local environment files:
@@ -127,7 +129,7 @@ pnpm --filter @starter/db db:migrate
 pnpm --filter @starter/db db:seed
 ```
 
-The sample domain is intentionally generic: `records`. Replace it when starting a real product rather than accumulating generic starter abstractions.
+The starter ships a generic `content_items` lifecycle: draft, edit, publish an unlisted share, revoke, and terminal archive. Replace this sample when a product has a more specific first domain.
 
 ## Vercel deployment model
 
@@ -174,7 +176,7 @@ Recommended flow:
 1. Push this repository to GitHub.
 2. Mark it as a **Template repository**.
 3. Create a new repository from the template for each SaaS product.
-4. Run `pnpm init:project -- --name "..." --slug ...` once.
+4. Run `pnpm init:project -- --name "..." --slug ... --ai-provider mock` once.
 5. Commit the renamed scaffold before product work starts.
 
 Do **not** create a separate source repo per customer. Customers are separate deployments of one product codebase.
@@ -186,3 +188,14 @@ Do **not** create a separate source repo per customer. Customers are separate de
 - Browser Clerk usage should import only from `@starter/auth/react`.
 - API Clerk verification should import only from `@starter/auth/server`.
 - App code should not depend directly on `@clerk/react`, `@clerk/backend`, `@clerk/ui`, `class-variance-authority`, `clsx`, or `tailwind-merge` unless an ADR intentionally changes package ownership.
+
+## Readiness commands
+
+```bash
+pnpm run doctor
+pnpm e2e:doctor
+pnpm verify:template
+pnpm verify:deployment -- --marketing-url ... --web-url ... --api-url ...
+```
+
+The deterministic mock provider is the default and ignores `AI_MODEL`. Enabling a live provider requires a model, credentials, and customer-cell budget/rate controls. No shared rate-limit datastore or control plane is included.

@@ -5,25 +5,27 @@
   "type": "module",
   "scripts": {
     "dev": "vercel dev --listen 3001",
-    "dev:e2e": "tsx src/dev.ts",
-    "build": "tsc -p tsconfig.json --noEmit",
+    "dev:e2e": "PORT=3101 tsx src/dev.ts",
+    "build": "pnpm --filter @starter/contracts build && pnpm --filter @starter/auth build && pnpm --filter @starter/db build && pnpm --filter @starter/telemetry build && tsc -p tsconfig.json --noEmit",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "latest",
+    "@hono/node-server": "2.1.1",
     "@starter/auth": "workspace:*",
     "@starter/contracts": "workspace:*",
     "@starter/db": "workspace:*",
     "@starter/telemetry": "workspace:*",
-    "drizzle-orm": "latest",
-    "hono": "latest",
-    "zod": "latest"
+    "@tanstack/ai": "0.52.1",
+    "@tanstack/ai-openai": "0.22.3",
+    "@tanstack/ai-vercel-gateway": "0.2.6",
+    "hono": "4.13.5",
+    "zod": "4.5.4"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "tsx": "latest",
-    "typescript": "latest",
-    "vercel": "latest"
+    "@types/node": "24.13.3",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3",
+    "vercel": "59.11.0"
   }
 }

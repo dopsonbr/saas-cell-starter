@@ -54,15 +54,25 @@ Lifecycle rules:
 
 ## Acceptance criteria
 
-- [ ] A disposable copy initializes once, refuses an unforced second run, preserves existing environment files, and passes frozen install plus `pnpm check`.
-- [ ] Mock AI works without credentials; live providers fail closed when their model or credentials are missing.
-- [ ] AI suggestions remain unsaved until the user explicitly saves.
-- [ ] Content lifecycle, public revocation, organization pinning, invalid input, CORS, and structured stream behavior are covered.
-- [ ] Browser tests cover authentication, persistence after refresh, presentation integrity, and representative mobile usability.
-- [ ] Server workspace packages build to resolvable JavaScript for direct Vercel packaging.
-- [ ] No secrets, auth states, test artifacts, or customer payloads enter Git or shared telemetry.
+- [x] A disposable copy initializes once, refuses an unforced second run, preserves existing environment files, and passes frozen install plus `pnpm check`.
+- [x] Mock AI works without credentials; live providers fail closed when their model or credentials are missing.
+- [x] AI suggestions remain unsaved until the user explicitly saves.
+- [x] Content lifecycle, public revocation, organization pinning, invalid input, CORS, and structured stream behavior are covered.
+- [x] Browser tests cover authentication, persistence after refresh, presentation integrity, and representative mobile usability.
+- [x] Server workspace packages build to resolvable JavaScript for direct Vercel packaging.
+- [x] No secrets, auth states, test artifacts, or customer payloads enter Git or shared telemetry.
 - [ ] One pushed PR targets `main`; no production deployment or merge occurs.
 
 ## Verification evidence
 
 Record exact results for frozen install, typecheck, lint, build, doctor, template verification, configured E2E checks, local Vercel packaging, `git diff --check`, and final branch/PR state in the pull-request description. Clearly list any external checks that could not run because credentials or deployment URLs were unavailable.
+
+Branch-head local evidence:
+
+- Node `24.19.0`, pnpm `10.25.0`, and `pnpm install --frozen-lockfile`: passed.
+- `pnpm check`: passed with 5 test files and 15 tests, plus typecheck, Biome, package builds, and app builds.
+- `pnpm run doctor`, `pnpm verify:template`, and `git diff --check`: passed.
+- Local Vercel CLI builds passed for `apps/marketing`, `apps/web`, and `apps/api`; API output is a Hono function on `nodejs24.x`.
+- `pnpm e2e:doctor`: correctly failed closed because the local checkout has no configured Clerk test credentials, two test identities, dedicated `E2E_DATABASE_URL`, or reset opt-in. Consequently `pnpm e2e:api`, `pnpm e2e:web`, and `pnpm e2e` were not run against an external cell.
+- Live-provider completion and deployed-URL verification were not run because no provider credentials or preview URLs were supplied.
+- No production deployment or promotion occurred.

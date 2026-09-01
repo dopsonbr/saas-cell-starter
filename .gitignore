@@ -8,6 +8,7 @@ dist/
 .DS_Store
 coverage/
 *.log
+*.tsbuildinfo
 playwright/.auth/
 playwright/test-results/
 playwright-report/
