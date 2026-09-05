@@ -85,7 +85,6 @@ This means a valid user from another customer organization still cannot use the 
 
 The starter dashboard intentionally loads all business data from `/v1/*` endpoints through TanStack Query. UI components never synthesize authoritative business state locally.
 
-
 ## Component library
 
 `packages/ui` owns reusable shadcn primitives, design-system utilities, and global Tailwind styling. Feature-specific compositions stay in the consuming app; generic primitives belong in `packages/ui`. The package follows shadcn monorepo aliases so the CLI can add reusable primitives to the shared package instead of copying them into `apps/web`.

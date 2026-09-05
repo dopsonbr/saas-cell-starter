@@ -103,7 +103,6 @@ Do not:
 - silently add infrastructure that requires a shared customer-data store
 - commit `.env.local`, `.env.e2e.local`, Playwright auth state, tokens, or generated secret files
 
-
 ## Package ownership
 
 - `packages/auth`: Clerk-specific browser/provider code and reusable API authentication middleware. Keep the `react` and `server` entry points runtime-safe and separate.

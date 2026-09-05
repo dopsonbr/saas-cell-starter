@@ -18,7 +18,10 @@ export type AuthProviderProps = PropsWithChildren<{
 
 export function AuthProvider({ publishableKey, children }: AuthProviderProps) {
   return (
-    <ClerkProvider publishableKey={publishableKey} appearance={{ theme: shadcn }}>
+    <ClerkProvider
+      publishableKey={publishableKey}
+      appearance={{ theme: { ...shadcn, cssLayerName: 'clerk' } }}
+    >
       {children}
     </ClerkProvider>
   )

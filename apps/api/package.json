@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/node": "latest",
     "tsx": "latest",
-    "typescript": "latest",
+    "typescript": "5.9.3",
     "vercel": "latest"
   }
 }

@@ -24,4 +24,4 @@ List the product concepts that should replace the generic starter `records` exam
 
 ## Non-goals
 
-- 
+-

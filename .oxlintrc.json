@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "ignorePatterns": [
+    "**/dist",
+    "**/node_modules",
+    "**/.vercel",
+    "playwright/.auth",
+    "playwright/test-results",
+    "playwright-report",
+    "coverage"
+  ],
+  "options": {
+    "maxWarnings": 0
+  }
+}

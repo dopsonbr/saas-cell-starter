@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts", "./schema": "./src/schema.ts" },
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -17,6 +20,7 @@
     "drizzle-orm": "latest"
   },
   "devDependencies": {
+    "@types/node": "latest",
     "dotenv": "latest",
     "drizzle-kit": "latest",
     "tsx": "latest"

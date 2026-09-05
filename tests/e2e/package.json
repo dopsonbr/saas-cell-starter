@@ -17,6 +17,6 @@
     "@playwright/test": "latest",
     "@types/node": "latest",
     "dotenv": "latest",
-    "typescript": "latest"
+    "typescript": "5.9.3"
   }
 }

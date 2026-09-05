@@ -1,4 +1,8 @@
-import type { CreateRecordInput, DashboardDto, RecordDto } from '@starter/contracts'
+import type {
+  CreateRecordInput,
+  DashboardDto,
+  RecordDto,
+} from '@starter/contracts'
 
 export type TokenProvider = () => Promise<string | null>
 
@@ -17,7 +21,9 @@ export function createApiClient(baseUrl: string, getToken: TokenProvider) {
     })
 
     if (!response.ok) {
-      const body = await response.json().catch(() => null) as { error?: string } | null
+      const body = (await response.json().catch(() => null)) as {
+        error?: string
+      } | null
       throw new Error(body?.error ?? `API request failed (${response.status})`)
     }
     return response.json() as Promise<T>
@@ -27,6 +33,9 @@ export function createApiClient(baseUrl: string, getToken: TokenProvider) {
     dashboard: () => request<DashboardDto>('/v1/dashboard'),
     records: () => request<RecordDto[]>('/v1/records'),
     createRecord: (input: CreateRecordInput) =>
-      request<RecordDto>('/v1/records', { method: 'POST', body: JSON.stringify(input) }),
+      request<RecordDto>('/v1/records', {
+        method: 'POST',
+        body: JSON.stringify(input),
+      }),
   }
 }

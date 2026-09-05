@@ -5,7 +5,11 @@
     "dev": "pnpm -r --parallel --filter './apps/**' dev",
     "build": "pnpm -r --filter './packages/**' build && pnpm -r --filter './apps/**' build",
     "typecheck": "pnpm -r typecheck",
-    "lint": "biome check .",
+    "lint": "pnpm lint:code && pnpm format:check",
+    "lint:code": "oxlint --deny-warnings .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "check": "pnpm typecheck && pnpm lint && pnpm build",
     "e2e": "pnpm --filter @starter/e2e test",
     "e2e:web": "pnpm --filter @starter/e2e test:web",
@@ -14,7 +18,8 @@
     "init:project": "node scripts/init-template.mjs"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@biomejs/biome": "latest"
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "typescript": "5.9.3"
   }
 }

@@ -133,11 +133,11 @@ The sample domain is intentionally generic: `records`. Replace it when starting 
 
 Create three Vercel projects from this repository:
 
-| Project | Root directory | Scope |
-|---|---|---|
+| Project               | Root directory   | Scope                         |
+| --------------------- | ---------------- | ----------------------------- |
 | `<product>-marketing` | `apps/marketing` | One shared product deployment |
-| `<customer>-web` | `apps/web` | One per customer |
-| `<customer>-api` | `apps/api` | One per customer |
+| `<customer>-web`      | `apps/web`       | One per customer              |
+| `<customer>-api`      | `apps/api`       | One per customer              |
 
 For every additional customer, create a new **web Vercel project**, **API Vercel project**, and **Neon project**, then bind the customer's Clerk organization ID through `EXPECTED_CLERK_ORG_ID`.
 
@@ -178,7 +178,6 @@ Recommended flow:
 5. Commit the renamed scaffold before product work starts.
 
 Do **not** create a separate source repo per customer. Customers are separate deployments of one product codebase.
-
 
 ## Shared auth and UI packages
 

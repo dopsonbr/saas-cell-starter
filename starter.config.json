@@ -8,15 +8,6 @@
   "testing": "playwright-e2e",
   "secrets": "vercel-injected-environment",
   "ciRequired": false,
-  "customerDeployment": [
-    "web",
-    "api",
-    "database"
-  ],
-  "shared": [
-    "marketing",
-    "clerk",
-    "observability",
-    "analytics"
-  ]
+  "customerDeployment": ["web", "api", "database"],
+  "shared": ["marketing", "clerk", "observability", "analytics"]
 }

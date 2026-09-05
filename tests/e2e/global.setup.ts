@@ -26,9 +26,13 @@ setup('authenticate the synthetic customer user', async ({ page }) => {
   await clerk.loaded({ page })
   await clerk.signIn({ page, emailAddress })
   await page.evaluate(async (orgId) => {
-    const clerkClient = (window as unknown as {
-      Clerk?: { setActive: (input: { organization: string }) => Promise<void> }
-    }).Clerk
+    const clerkClient = (
+      window as unknown as {
+        Clerk?: {
+          setActive: (input: { organization: string }) => Promise<void>
+        }
+      }
+    ).Clerk
     if (!clerkClient) throw new Error('Clerk did not load in the browser')
     await clerkClient.setActive({ organization: orgId })
   }, expectedOrgId)

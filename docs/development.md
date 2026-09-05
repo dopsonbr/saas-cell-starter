@@ -14,10 +14,18 @@ Use a dedicated Neon development branch/project and Clerk development instance. 
 pnpm dev
 pnpm typecheck
 pnpm lint
+pnpm lint:fix
+pnpm format
+pnpm format:check
 pnpm build
 pnpm e2e:api
 pnpm e2e:web
 ```
+
+`pnpm lint` runs Oxlint and verifies Oxfmt formatting without modifying files.
+TypeScript checking remains a separate gate under `pnpm typecheck`. Use
+`pnpm lint:fix` for safe lint fixes and `pnpm format` to write formatting
+changes.
 
 Database:
 
@@ -42,7 +50,6 @@ This order keeps the HTTP contract explicit.
 ## E2E
 
 Use the Playwright suite in `tests/e2e` for real browser/API verification. It starts the local API and SPA and uses a synthetic Clerk organization/user plus a dedicated Neon test database. See `docs/testing.md` for setup. E2E is intentionally local/pre-release; this starter does not require CI.
-
 
 ## Adding shadcn components
 
