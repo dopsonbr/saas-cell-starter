@@ -45,6 +45,8 @@ Clerk is shared identity. Telemetry/analytics may be shared only when they do no
 - Keep domain logic out of HTTP handlers once it is more than trivial orchestration.
 - Public endpoints should be exceptional (`/health`, webhook endpoints that verify their own signatures).
 - Import reusable Clerk request authentication through `@starter/auth/server`; app code owns env wiring and route policy.
+- Keep AI provider adapters and credentials in `apps/api`, collaborator schemas in `packages/contracts`, and suggestion rendering in `apps/web`.
+- AI suggestions must remain reviewable local state until the user explicitly saves; do not autosave generated output or render raw structured JSON.
 
 ### Database
 
@@ -109,3 +111,4 @@ Do not:
 - `packages/auth`: Clerk-specific browser/provider code and reusable API authentication middleware. Keep the `react` and `server` entry points runtime-safe and separate.
 - `packages/ui`: reusable shadcn primitives, shared styles, hooks, and UI utilities. Keep product/feature components in apps until they are genuinely reusable.
 - Do not make `packages/ui` depend on product domain packages or API clients.
+- The starter's `content_items` sample is organization-wide: `createdByUserId` is audit metadata, not a per-user authorization boundary.

@@ -3,22 +3,34 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts", "./schema": "./src/schema.ts" },
+  "exports": {
+    ".": {
+      "node": "./dist/src/index.js",
+      "default": "./src/index.ts"
+    },
+    "./schema": {
+      "node": "./dist/src/schema.js",
+      "default": "./src/schema.ts"
+    }
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "tsc -p tsconfig.json --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx src/migrate.ts",
-    "db:seed": "tsx src/seed.ts"
+    "db:seed": "tsx src/seed.ts",
+    "db:e2e:reset": "tsx src/e2e-reset.ts"
   },
   "dependencies": {
-    "@neondatabase/serverless": "latest",
-    "drizzle-orm": "latest"
+    "@neondatabase/serverless": "1.1.0",
+    "drizzle-orm": "0.45.2"
   },
   "devDependencies": {
-    "dotenv": "latest",
-    "drizzle-kit": "latest",
-    "tsx": "latest"
+    "@types/node": "24.13.3",
+    "dotenv": "17.4.2",
+    "drizzle-kit": "0.31.10",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3"
   }
 }

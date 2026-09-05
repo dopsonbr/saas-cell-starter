@@ -1,5 +1,5 @@
 import { createCustomerAuthMiddleware } from '@starter/auth/server'
-import { env } from './env'
+import { env } from './env.js'
 
 export const requireCustomerAuth = createCustomerAuthMiddleware({
   secretKey: env.CLERK_SECRET_KEY,

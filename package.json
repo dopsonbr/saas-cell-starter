@@ -1,20 +1,34 @@
 {
   "name": "saas-cell-starter",
   "private": true,
+  "packageManager": "pnpm@10.25.0",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
+    "postinstall": "pnpm -r --filter './packages/**' build",
     "dev": "pnpm -r --parallel --filter './apps/**' dev",
     "build": "pnpm -r --filter './packages/**' build && pnpm -r --filter './apps/**' build",
     "typecheck": "pnpm -r typecheck",
     "lint": "biome check .",
-    "check": "pnpm typecheck && pnpm lint && pnpm build",
+    "check": "pnpm test && pnpm typecheck && pnpm lint && pnpm build",
+    "test": "vitest run",
     "e2e": "pnpm --filter @starter/e2e test",
     "e2e:web": "pnpm --filter @starter/e2e test:web",
     "e2e:api": "pnpm --filter @starter/e2e test:api",
     "e2e:install": "pnpm --filter @starter/e2e install:browsers",
-    "init:project": "node scripts/init-template.mjs"
+    "e2e:doctor": "node scripts/e2e-doctor.mjs",
+    "e2e:reset": "node scripts/e2e-reset.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "init:project": "node scripts/init-template.mjs",
+    "verify:template": "node scripts/verify-template.mjs",
+    "verify:deployment": "node scripts/verify-deployment.mjs"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@biomejs/biome": "latest"
+    "@biomejs/biome": "2.5.11",
+    "@types/node": "24.13.3",
+    "dotenv": "17.4.2",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
   }
 }

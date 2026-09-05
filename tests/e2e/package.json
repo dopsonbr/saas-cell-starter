@@ -4,8 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "pretest": "node ../../scripts/e2e-doctor.mjs && node ../../scripts/e2e-reset.mjs",
+    "pretest:web": "node ../../scripts/e2e-doctor.mjs && node ../../scripts/e2e-reset.mjs",
+    "pretest:api": "node ../../scripts/e2e-doctor.mjs && node ../../scripts/e2e-reset.mjs",
     "test": "playwright test",
-    "test:web": "playwright test --project=web-authenticated --project=web-signed-out",
+    "test:web": "playwright test --project=web-authenticated --project=web-mobile --project=web-signed-out",
     "test:api": "playwright test --project=api",
     "install:browsers": "playwright install chromium",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -13,10 +16,10 @@
     "build": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
-    "@clerk/testing": "latest",
-    "@playwright/test": "latest",
-    "@types/node": "latest",
-    "dotenv": "latest",
-    "typescript": "latest"
+    "@clerk/testing": "2.2.32",
+    "@playwright/test": "1.62.1",
+    "@types/node": "24.13.3",
+    "dotenv": "17.4.2",
+    "typescript": "5.9.3"
   }
 }
