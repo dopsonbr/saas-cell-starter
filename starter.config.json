@@ -1,4 +1,9 @@
 {
+  "initialized": false,
+  "productName": "SaaS Cell Starter",
+  "slug": "saas-cell-starter",
+  "packageScope": "@starter",
+  "aiProvider": "mock",
   "architecture": "single-tenant-cell",
   "frontend": "react-vite",
   "api": "hono-vercel",

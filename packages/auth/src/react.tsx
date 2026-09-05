@@ -1,4 +1,3 @@
-import type { PropsWithChildren } from 'react'
 import {
   ClerkProvider,
   OrganizationSwitcher,
@@ -10,7 +9,7 @@ import {
   useOrganization,
   useUser,
 } from '@clerk/react'
-import { shadcn } from '@clerk/ui/themes'
+import type { PropsWithChildren } from 'react'
 
 export type AuthProviderProps = PropsWithChildren<{
   publishableKey: string
@@ -18,12 +17,7 @@ export type AuthProviderProps = PropsWithChildren<{
 
 export function AuthProvider({ publishableKey, children }: AuthProviderProps) {
   return (
-    <ClerkProvider
-      publishableKey={publishableKey}
-      appearance={{ theme: { ...shadcn, cssLayerName: 'clerk' } }}
-    >
-      {children}
-    </ClerkProvider>
+    <ClerkProvider publishableKey={publishableKey}>{children}</ClerkProvider>
   )
 }
 

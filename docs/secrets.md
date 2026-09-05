@@ -36,6 +36,11 @@ Treat these as secrets:
 - `CLERK_SECRET_KEY`
 - telemetry/exporter auth headers or tokens
 - third-party API keys introduced by product features
+- `OPENAI_API_KEY`
+- `AI_GATEWAY_API_KEY`
+- `VERCEL_OIDC_TOKEN`
+
+`AI_MODEL` and `AI_PROVIDER` are server-only configuration, not secrets. The gateway credential order is API key, environment OIDC token, then Vercel request-injected OIDC token. The mock provider ignores model and credential variables.
 
 On Vercel, mark confidential Production/Preview variables Sensitive.
 

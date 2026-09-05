@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Card, CardContent } from '@starter/ui/components/card'
 import {
   ArrowRight,
   Database,
   Gauge,
   LockKeyhole,
+  type LucideIcon,
   Network,
   ShieldCheck,
-  type LucideIcon,
 } from 'lucide-react'
-import { Card, CardContent } from '@starter/ui/components/card'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import './index.css'
 
 const appUrl = import.meta.env.VITE_APP_URL || '#'
@@ -135,7 +135,10 @@ function App() {
     </div>
   )
 }
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')
+if (!root) throw new Error('Missing application root')
+
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

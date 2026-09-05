@@ -18,17 +18,17 @@
     "lint": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "class-variance-authority": "latest",
-    "clsx": "latest",
-    "tailwind-merge": "latest"
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.6.0"
   },
   "peerDependencies": {
-    "react": ">=18"
+    "react": "19.2.8"
   },
   "devDependencies": {
-    "@types/react": "latest",
-    "react": "latest",
-    "tailwindcss": "latest",
+    "@types/react": "19.2.18",
+    "react": "19.2.8",
+    "tailwindcss": "4.3.3",
     "typescript": "5.9.3"
   }
 }

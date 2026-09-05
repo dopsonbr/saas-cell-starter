@@ -1,20 +1,16 @@
 import 'dotenv/config'
-import { createDb } from './index'
-import { records } from './schema'
+import { createDb } from './index.js'
+import { contentItems } from './schema.js'
 
 if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required')
 const db = createDb(process.env.DATABASE_URL)
-await db.insert(records).values([
-  { title: 'Connect the first real data source', status: 'active', value: 32 },
+await db.insert(contentItems).values([
   {
-    title: 'Replace starter records with domain entities',
-    status: 'active',
-    value: 68,
-  },
-  {
-    title: 'Verify isolated customer deployment',
-    status: 'completed',
-    value: 100,
+    title: 'Welcome to your content library',
+    body: 'Replace this neutral sample with the first real workflow for your product.',
+    tags: ['starter'],
+    status: 'draft',
+    createdByUserId: 'starter-seed',
   },
 ])
 console.log('Seed complete')

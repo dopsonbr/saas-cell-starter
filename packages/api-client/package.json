@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "@starter/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
   }
 }
