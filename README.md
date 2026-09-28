@@ -29,6 +29,8 @@ Reusable starter for a B2B SaaS where **each customer gets an isolated React SPA
 
 There is **no control plane** and **no required CI pipeline** in this starter. Provisioning and release promotion are intentionally documented/manual until scale justifies automation.
 
+For the expansion path, read the [provider-neutral polyrepo reference architecture](./docs/architecture/README.md). It covers repository ownership, design system releases, tenant topology, control-plane provisioning, functions/workers, evals, MCP, synthetic provider mocks and adaptation to other domains. The guide generalizes lessons from Ravelo; these optional platform components are documented designs, not features installed in this starter.
+
 ## Stack
 
 - React + Vite + TypeScript

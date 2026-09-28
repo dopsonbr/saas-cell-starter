@@ -1,5 +1,7 @@
 # Architecture
 
+This page describes the executable starter baseline. For a provider-neutral expansion into independently released repositories and managed tenant fleets, see the [polyrepo reference architecture](architecture/README.md) and its [implementation-status matrix](architecture/adoption.md). The optional reference does not change this baseline.
+
 ## System shape
 
 A product has one shared marketing site and many isolated customer cells.
