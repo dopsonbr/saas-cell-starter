@@ -11,6 +11,7 @@ A detailed provider-neutral architecture guide on a separate branch, suitable fo
 - Distinguish implemented behavior from candidate MCP work and proposed architecture.
 - Public documents contain no customer data, private resource identities, credentials or machine paths.
 - Names, providers, CI, issue conventions and repository count are choices for adopters.
+- Keep this deliverable and its verification record self-contained in the repository; no external ticket or documentation service is required.
 
 ## API changes
 
@@ -30,7 +31,7 @@ No application UI changes. Documentation covers empty/loading/error/success, den
 2. Create an isolated branch from current remote main.
 3. Write overview, repository map, tenant/control/runtime, shared-system, AI/MCP and adoption guides plus a documentation ADR.
 4. Review contract consistency, domain neutrality, implementation claims and navigation; run applicable repository checks.
-5. Commit and push the documentation branch and publish a private readable documentation mirror.
+5. Commit and push the documentation branch with its complete delivery and verification record in this repository.
 
 ## Acceptance criteria
 
@@ -38,7 +39,7 @@ No application UI changes. Documentation covers empty/loading/error/success, den
 - [x] Domain examples and phased adoption explain how to reuse the design.
 - [x] Current starter functionality and proposed expansion are explicit.
 - [x] Markdown links, formatting and repository validation pass or limitations are recorded.
-- [x] Documentation branch is committed/pushed and publication is read back.
+- [x] Documentation branch is committed/pushed and the remote revision is verified.
 
 ## Verification evidence
 
@@ -53,8 +54,8 @@ Base revision: `0551a3af6f68d830155319e153fdd3503c68b0b3`. Source inspection and
 
 The branch contains six architecture guides, ADR 0008, this delivery plan and entry links from the existing README/architecture guide. Runtime expansion, deployment and hosted acceptance remain outside this task.
 
-## Publication receipt
+## Repository delivery
 
-Documentation source `363749004b54a53e99ae908f9905eb2f75ad048e` was pushed to [codex/dop-166-polyrepo-architecture](https://github.com/dopsonbr/saas-cell-starter/tree/codex/dop-166-polyrepo-architecture) and verified against the remote branch. The branch remains unmerged; no runtime files, dependency manifests or infrastructure were changed.
+The complete deliverable is available on [codex/polyrepo-architecture](https://github.com/dopsonbr/saas-cell-starter/tree/codex/polyrepo-architecture). The branch remains unmerged; no runtime files, dependency manifests or infrastructure were changed.
 
-A private knowledge-base overview and six child pages mirror the six guides and ADR, with immutable source links and revision/status metadata. Readback verified every section heading, all substantive paragraphs, all five Mermaid diagrams, the repository tree and native tables; the knowledge-base document index lists every page with ownership, revision, status and review date. Access-controlled publication links are retained in the task record. Existing implementation runbooks remain authoritative for their own systems and were not superseded.
+Start with the [architecture overview](../architecture/README.md). All six guides, diagrams, the adoption examples, ADR and verification evidence are ordinary repository files. They require no external project tracker, private documentation mirror or account to understand. Existing implementation runbooks remain authoritative for their own systems and were not superseded.
