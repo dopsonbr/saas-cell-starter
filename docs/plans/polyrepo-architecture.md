@@ -38,7 +38,7 @@ No application UI changes. Documentation covers empty/loading/error/success, den
 - [x] Domain examples and phased adoption explain how to reuse the design.
 - [x] Current starter functionality and proposed expansion are explicit.
 - [x] Markdown links, formatting and repository validation pass or limitations are recorded.
-- [ ] Documentation branch is committed/pushed and publication is read back.
+- [x] Documentation branch is committed/pushed and publication is read back.
 
 ## Verification evidence
 
@@ -51,4 +51,10 @@ Base revision: `0551a3af6f68d830155319e153fdd3503c68b0b3`. Source inspection and
 - Independent review of all guides, ADR and plan found no actionable issues. `git diff --check` passed.
 - Browser/API E2E and hosted checks were not run: this change modifies documentation only and does not alter customer-facing behavior.
 
-The branch contains six architecture guides, ADR 0008, this delivery plan and entry links from the existing README/architecture guide. Runtime expansion, deployment and hosted acceptance remain outside this task. Branch publication and private documentation-mirror receipts will be recorded after readback.
+The branch contains six architecture guides, ADR 0008, this delivery plan and entry links from the existing README/architecture guide. Runtime expansion, deployment and hosted acceptance remain outside this task.
+
+## Publication receipt
+
+Documentation source `363749004b54a53e99ae908f9905eb2f75ad048e` was pushed to [codex/dop-166-polyrepo-architecture](https://github.com/dopsonbr/saas-cell-starter/tree/codex/dop-166-polyrepo-architecture) and verified against the remote branch. The branch remains unmerged; no runtime files, dependency manifests or infrastructure were changed.
+
+A private knowledge-base overview and six child pages mirror the six guides and ADR, with immutable source links and revision/status metadata. Readback verified every section heading, all substantive paragraphs, all five Mermaid diagrams, the repository tree and native tables; the knowledge-base document index lists every page with ownership, revision, status and review date. Access-controlled publication links are retained in the task record. Existing implementation runbooks remain authoritative for their own systems and were not superseded.
