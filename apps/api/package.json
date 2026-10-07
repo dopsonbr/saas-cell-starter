@@ -19,7 +19,7 @@
     "@tanstack/ai": "0.52.1",
     "@tanstack/ai-openai": "0.22.3",
     "@tanstack/ai-vercel-gateway": "0.2.6",
-    "hono": "4.13.5",
+    "hono": "4.13.7",
     "zod": "4.5.4"
   },
   "devDependencies": {
